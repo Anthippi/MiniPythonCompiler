@@ -3,7 +3,7 @@ import minipython.lexer.Lexer;
 import minipython.parser.Parser;
 import minipython.node.Start;
 
-public class ParserTest1
+public class ParserTest
 {
   public static void main(String[] args)
   {

@@ -4,7 +4,7 @@ import minipython.parser.Parser;
 import minipython.node.Start;
 
 
-public class ASTTest1
+public class ASTTest
 {
   public static void main(String[] args)
   {

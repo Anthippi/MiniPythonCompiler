@@ -15,7 +15,7 @@
 
 ```bash
 java -jar sablecc.jar minipython.grammar
-savlecc minipython.grammar
+sablecc minipython.grammar
 ```
 
 ### Compilation

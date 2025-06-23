@@ -16,9 +16,11 @@
 ## Εγκατάσταση και Setup
 
 Η εργασία υλοποιείται σε **Java** με χρήση του εργαλείου **SableCC**.
+Κατέβασε το SableCC v3 και τοποθέτησέ το στον φάκελο του project ή στο `PATH`.
 
 ### Προαπαιτούμενα
-
+ Εγκατάσταση του [SableCC](https://sablecc.org)
+ 
 - Java 8 ή νεότερη (π.χ., OpenJDK)
 - `javac` και `java` στο `$PATH`
 - SableCC (αρχείο `sablecc.jar`)

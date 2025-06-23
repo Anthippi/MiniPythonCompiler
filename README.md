@@ -35,9 +35,8 @@
    sablecc minipython.grammar
    ```
 #### Linux/macOS:
-Αντιγράψτε το αρχείο sablecc (shell script).
-
-Εκτελέστε:
+1. Αντιγράψτε το αρχείο sablecc (shell script).
+2. Εκτελέστε:
   ```sh
   chmod +x sablecc
   ./sablecc minipython.grammar

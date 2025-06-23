@@ -31,9 +31,9 @@
 #### Windows:
 1. Αντιγράψτε το `sablecc.bat` από το υλικό εργασίας στον φάκελο `phaseA/`.
 2. Εκτελέστε:
-   ```sh
-   sablecc minipython.grammar
-   ```
+  ```sh
+  sablecc minipython.grammar
+  ```
 #### Linux/macOS:
 1. Αντιγράψτε το αρχείο sablecc (shell script).
 2. Εκτελέστε:

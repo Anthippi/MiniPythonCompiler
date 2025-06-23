@@ -1,4 +1,4 @@
-# Phase B - miniPython: AST & Symbol Semantic
+# Phase B - miniPython: AST & Symbol Semantic [![Static Badge](https://img.shields.io/badge/English-orange)](README.en.md)
 
 Αυτή η φάση περιλαμβάνει τη δημιουργία Αφηρημένου Συντακτικού Δέντρου (AST) για προγράμματα γραμμένα σε miniPython με χρήση του SableCC. 'Οπως και την υλοποίηση της Σημασιολογικής Ανάλυσης, η οποία περιλαμβάνει τη δημιουργία πίνακα συμβόλων, τον έλεγχο τύπων και την εντοπισμό σημασιολογικών λαθών.
 

@@ -20,16 +20,16 @@ sablecc minipython.grammar
 
 ### Compilation
 ```bash
-javac -cp . ParserTest1.java LexerTest1.java
+javac -cp . ParserTest.java LexerTest.java
 
 ```
 
 ## Εκτέλεση Παραδειγμάτων
 ```bash
 # Λεξική Ανάλυση
-java LexerTest1 miniPythonExample.py
+java LexerTest miniPythonExample.py
 
 # Συντακτική Ανάλυση
-java ParserTest1 miniPythonExample.py
+java ParserTest miniPythonExample.py
 ```
 

@@ -1,4 +1,4 @@
-# Phase A – miniPython: Lexer & Parser
+# Phase A – miniPython: Lexer & Parser [![Static Badge](https://img.shields.io/badge/English-orange)](README.en.md)
 
 Αυτή η φάση περιλαμβάνει την υλοποίηση ενός **λεξικού αναλυτή (Lexer)** και ενός **συντακτικού αναλυτή (Parser)** για μια υποσύνολο της γλώσσας **miniPython**, χρησιμοποιώντας το εργαλείο **SableCC**.
 

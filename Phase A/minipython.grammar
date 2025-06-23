@@ -1,0 +1,353 @@
+/*
+* Ανδρίτσος Γεώργιος P3120009
+* Σταμούλος Χρήστος P3210188
+* Σχοινάκη Μαρία P3210191
+* Φατσέα Ανθίππη P3190209
+*/
+
+Package minipython;
+
+Helpers // Βοηθητικά στοιχεία για τα παρακάτω
+
+    all = [0 .. 127];
+
+    sp = 32; // Space 
+    ff = 12; // Form Feed 
+    cr = 13; // Carriage Return 
+    lf = 10; // Line Feed 
+
+    eol = lf | cr | cr lf ;
+    not_eol = [all - [cr + lf]];
+
+
+    // Letter and Digit definition 
+    letter = ['a'..'z']|['A'..'Z'];
+    non_digit = letter|'_';
+    digit = ['0'..'9'];
+
+
+    // Integer and Decimal definition 
+    integer = digit+;
+    literal = integer '.' integer;
+
+
+    // Sting Literal
+	string_literal_double = [not_eol - 34]; // 34 = "
+	string_literal_single = [not_eol - 39]; // 39 = ' 
+
+
+
+// Δήλωση των καταστάσεων, στις οποίες μπορεί να βρίσκεται το αυτόματο της λεκτικής ανάλυσης
+States 
+   normal, 
+   sq_string, 
+   dq_string, 
+   comment;
+
+
+// Τα κουπόνια (λεκτικης μονάδες) της λεκτικής ανάλυσης
+Tokens 
+
+    // Tab
+        {normal} tab = 9; 
+
+    // Whitespace definition 
+        {normal} whitespace = sp|cr|ff|lf;
+
+    // logic
+        {normal} and = 'and';
+        {normal} or = 'or';
+        {normal} not = 'not';
+
+    // symbols
+        {normal} colon = ':';
+        {normal} coma = ',';
+        {normal} dot = '.';
+        {normal} assign = '=';
+        {normal} left_parenthesis = '(';
+        {normal} right_parenthesis = ')';
+        {normal} left_bracket = '[';
+        {normal} right_bracket = ']';
+
+    // comparison
+        {normal} greater_than = '>';
+        {normal} less_equal = '<=';
+        {normal} greater_equal = '>=';
+        {normal} equal = '==';
+        {normal} not_equal = '!=';
+        {normal} less_than = '<';
+
+    // arithmetic
+        {normal} plus = '+';
+        {normal} minus = '-';
+        {normal} times = '*';
+        {normal} divide = '/';
+        {normal} modulo = '%';
+        {normal} power = '**';
+
+    // assignments
+        {normal} minus_equal = '-=';
+        {normal} divide_equal = '/=';
+        {normal} plus_equal = '+=';
+        {normal} mult_equal = '*=';
+
+    // boolean
+        {normal} true = 'true';
+        {normal} false = 'false';
+        {normal} none = 'None';
+
+    // key-symbols
+        {normal} if = 'if';
+        {normal} else = 'else';
+        {normal} while = 'while';
+        {normal} for = 'for';
+        {normal} def = 'def';
+        {normal} return = 'return';
+        {normal} print = 'print';
+        {normal} in = 'in';
+        {normal} assert = 'assert';
+        {normal} len = 'len';
+        {normal} ascii = 'ascii';
+        {normal} max = 'max';
+        {normal} min = 'min';
+        {normal} tk_import = 'import';
+        {normal} as = 'as';
+        {normal} from = 'from';
+
+
+
+    // identifier definition 
+        {normal} id = non_digit (digit | non_digit)*;
+    
+    // Number definition
+        {normal} num = integer | literal;
+
+
+    // Comment
+        {normal->comment} comment_start = '#';
+        {comment} comment_text = not_eol*;
+        {comment->normal} end_comment = eol;
+    
+    // Strings
+        {normal->dq_string, dq_string->normal} double_quote = '"';
+        {normal->sq_string, sq_string->normal} single_quote = ''';
+        {dq_string} string_literal_d =  string_literal_double*;
+        {sq_string} string_literal_s = string_literal_single*;
+
+
+Ignored Tokens
+
+    comment_start,
+    comment_text,
+    end_comment,
+    whitespace;
+
+
+/* Concrete Syntax Tree */
+Productions
+
+    // Goal
+        goal = function_or_statement*;
+
+        function_or_statement = {func}function 
+                        |   {stat} statement;
+
+
+    // Function
+
+        function = def identifier left_parenthesis argument? right_parenthesis colon statement;
+
+
+    // Arguments
+
+        /********** ARGUMENTS **********/
+        /*                             */
+        /* Two additional level in     */
+        /* order to handle extra       */
+        /* arguments with coma.        */
+        /*                             */
+        /*******************************/
+
+        argument = identifier argument_assign? argument_additional_assign*;
+
+        argument_assign = assign value;
+        argument_additional_assign = coma identifier argument_assign?;
+
+
+    // Statements
+
+        /********** STATEMENTS **********/
+        /*                              */
+        /* All statements mentioned in  */
+        /* the BNF are included here.   */
+        /*                              */
+        /* The assignments are given    */
+        /* as options in assign_opt.    */
+        /*                              */
+        /********************************/
+
+        statement = {if} tab* if comparison colon statement
+                |   {while} tab* while comparison colon statement
+                |   {for} tab* for [i1]:identifier in [i2]:identifier colon statement
+                |   {return} tab* return expression
+                |   {print} tab* print expression additional_expression*
+                |   {assign} tab* identifier assign_opt expression      // See assign_opt to add more. BNF only stated 3 options.
+                |   {array} tab* identifier left_bracket [e1]:expression right_bracket assign [e2]:expression
+                |   {assert} tab* assert expression additional_expression?
+                |   {assert_comparison} assert comparison additional_expression? // den uparxei sto bnf
+                |   {f_call} tab* function_call
+                |   {import} tab* import;
+        
+        assign_opt = {eq} assign 
+                |   {plus_eq} plus_equal
+                |   {minus_eq} minus_equal
+                |   {div_eq} divide_equal
+                |   {mult_eq} mult_equal;
+
+
+    // Expressions
+
+        /********** EXPRESSIONS **********/
+        /*                               */
+        /* Our expressions have 4 levels */
+        /* Level 1 -> expression         */
+        /* Level 2 -> factor             */
+        /* Level 3 -> exponent           */
+        /* Level 4 -> primary_expression */
+        /*                               */
+        /* expression_operators are used */
+        /* last so that they can also be */
+        /* part of any operations.       */
+        /*                               */
+        /*********************************/
+
+        expression = {factor} factor
+                |   {addition} expression plus factor
+                |   {subtraction} expression minus factor;
+
+        factor = {exponent} exponent
+                |{mult} factor times exponent 
+                |{div}  factor divide exponent 
+                |{mod}  factor modulo exponent;
+
+
+        exponent =  {expression_operators} expression_operators
+                |   {exponent} exponent power expression_operators;
+
+        primary_expression = {value} value
+                        |   {identifier} identifier
+                        |   {f_call} function_call
+                        |   {array_index} identifier left_bracket expression_operators right_bracket
+                        |   {parenth} left_parenthesis expression right_parenthesis;
+
+
+        expression_operators = {primary_expression} primary_expression
+                |   {length} len left_parenthesis expression right_parenthesis
+                |   {ascii} ascii left_parenthesis identifier right_parenthesis
+                |   {max} max left_parenthesis value additional_value* right_parenthesis
+                |   {min} min left_parenthesis value additional_value* right_parenthesis
+                |   {array} left_bracket value additional_value* right_bracket; 
+
+
+    // Imports
+
+        /************ IMPORTS ************/
+        /*                               */
+        /* Three additional level in     */
+        /* order to handle additional    */
+        /* modules and identifiers       */
+        /*                               */
+        /*********************************/
+
+        import =  {import} tk_import module import_as_identifier? import_additional_module*
+                | {from} from module tk_import identifier import_as_identifier? import_additional_from*;
+
+        import_as_identifier = as identifier;
+        import_additional_module = coma module import_as_identifier?;
+        import_additional_from = coma identifier import_as_identifier?;
+
+
+    // Modules
+
+        module = module_dot_identifier* identifier;
+
+        module_dot_identifier = identifier dot;
+
+
+    // Comparisons
+
+        /********** COMPARISONS **********/
+        /*                               */
+        /* Our comparisons have 4 levels */
+        /* Level 1 -> comparison (or)    */
+        /* Level 2 -> comparison2 (and)  */
+        /* Level 3 -> comparison3 (not)  */
+        /* Level 4 -> primary_expression */
+        /*                               */
+        /* We have added {par} in        */
+        /* comparison in order to handle */
+        /* if statement with parenthesis */
+        /*                               */
+        /* comparison_opt are used       */
+        /* last and include  all 6       */
+        /* mentioned in the BNF          */
+        /*                               */
+        /*********************************/
+
+// Comparisons
+        comparison = comparison2
+                    | {or} comparison or comparison2;
+
+        comparison2 = comparison3
+                    | {and} comparison2 and comparison3;
+
+        comparison3 = {primary_comparison} primary_comparison
+                    | {not} not comparison3;
+
+        primary_comparison = {expression} [ex1]:expression comparison_opt [op2]:expression
+                    | {true} true
+                    | {false} false
+                    | {par} left_parenthesis comparison right_parenthesis; // den uparxei sto bnf
+
+        comparison_opt ={greater} greater_than
+                    |   {less} less_than
+                    |   {greater_equal} greater_equal
+                    |   {less_equal} less_equal
+                    |   {equal} equal
+                    |   {not_equal} not_equal;
+        
+
+    // Function Calls
+
+        function_call = identifier left_parenthesis arglist? right_parenthesis;
+
+
+    // Arglists
+
+        arglist = expression additional_expression*;
+
+
+    // Values            
+
+        value = {number} number
+            |   {dq_string} [dq1]:double_quote string_literal_d [dq2]:double_quote
+            |   {sq_string} [sq1]:single_quote string_literal_s [sq2]:single_quote
+            |   {func} identifier dot function_call
+            |   {none} none;
+
+
+    // Number
+
+        number = num;
+
+
+    // Identifier
+    
+        identifier = id;
+
+
+    // Helpers
+    
+        additional_expression = coma expression;
+        additional_value = coma value;
+    

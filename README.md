@@ -44,3 +44,9 @@
   ./sablecc minipython.grammar
   ```
 Μετά την εκτέλεση, δημιουργείται αυτόματα φάκελος `minipython/` με τους υποφακέλους `analysis`, `lexer`, `parser`, `node`.
+
+## Ομάδα
+- [Ανδρίτσος Γεώργιος](https://github.com/Andritsos)
+- [Φατσέα Ανθίππη](https://github.com/Anthippi)
+- [Σταμούλος Χρήστος](https://github.com/ChristosStamoulos)
+- [Σχοινάκη Μαρία](https://github.com/MariaSchoinaki)

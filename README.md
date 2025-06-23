@@ -1,4 +1,4 @@
-# MiniPython Compiler
+# MiniPython Compiler [![Static Badge](https://img.shields.io/badge/English-orange)](README.en.md)
 
 Αυτή η εργασία αφορά την υλοποίηση ενός μεταγλωττιστή για τη γλώσσα **miniPython**, ένα υποσύνολο της Python. Η εργασία υλοποιείται σε δύο φάσεις, με χρήση του εργαλείου **[SableCC](https://sablecc.org)**.
 

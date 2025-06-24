@@ -6,11 +6,11 @@ This project involves the implementation of a **compiler** for the **miniPython*
 
 The project consists of two main phases:
 
-- **[Phase A](https://github.com/Anthippi/MiniPythonCompiler/tree/main/Phase%20A)**  
+- **[Phase A](https://github.com/Anthippi/MiniPythonCompiler/blob/main/Phase%20A/README.en.md)**  
   - Lexical Analysis  
   - Syntax Analysis  
 
-- **[Phase B](https://github.com/Anthippi/MiniPythonCompiler/tree/main/Phase%20B)**  
+- **[Phase B](https://github.com/Anthippi/MiniPythonCompiler/blob/main/Phase%20B/README.en.md)**  
   - Abstract Syntax Tree (AST) Construction  
   - Symbol Table & Semantic Analysis  
 

@@ -5,11 +5,11 @@
 ## Δομή Εργασίας
 Η εργασία αποτελείται από δύο κύριες φάσεις:
 
-- **[Φάση Α:](https://github.com/Anthippi/MiniPythonCompiler/blob/main/Phase%20A/README.md)**  
+- **[Φάση Α:](https://github.com/Anthippi/MiniPythonCompiler/blob/main/Phase%20A)**  
   - Λεκτική Ανάλυση  
   - Συντακτική Ανάλυση  
 
-- **[Φάση Β:](https://github.com/Anthippi/MiniPythonCompiler/blob/main/Phase%20B/README.md)**  
+- **[Φάση Β:](https://github.com/Anthippi/MiniPythonCompiler/blob/main/Phase%20B)**  
   - Κατασκευή Αφηρημένου Συντακτικού Δέντρου (AST)  
   - Πίνακας Συμβόλων & Σημασιολογικός Έλεγχος
  

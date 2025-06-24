@@ -5,7 +5,7 @@
 ## Δομή Εργασίας
 Η εργασία αποτελείται από δύο κύριες φάσεις:
 
-- **[Φάση Α:](https://github.com/Anthippi/MiniPythonCompiler/tree/main/Phase%20A)**  
+- **[Φάση Α:](https://github.com/Anthippi/MiniPythonCompiler/blob/main/Phase%20A/README.md)**  
   - Λεκτική Ανάλυση  
   - Συντακτική Ανάλυση  
 

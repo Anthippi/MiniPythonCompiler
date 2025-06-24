@@ -9,7 +9,7 @@
   - Λεκτική Ανάλυση  
   - Συντακτική Ανάλυση  
 
-- **[Φάση Β:](https://github.com/Anthippi/MiniPythonCompiler/tree/main/Phase%20B)**  
+- **[Φάση Β:](https://github.com/Anthippi/MiniPythonCompiler/blob/main/Phase%20B/README.md)**  
   - Κατασκευή Αφηρημένου Συντακτικού Δέντρου (AST)  
   - Πίνακας Συμβόλων & Σημασιολογικός Έλεγχος
  

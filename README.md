@@ -49,4 +49,3 @@
 - [Ανδρίτσος Γεώργιος](https://github.com/Andritsos)
 - [Φατσέα Ανθίππη](https://github.com/Anthippi)
 - [Σταμούλος Χρήστος](https://github.com/ChristosStamoulos)
-- [Σχοινάκη Μαρία](https://github.com/MariaSchoinaki)

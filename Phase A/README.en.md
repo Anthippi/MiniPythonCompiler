@@ -31,7 +31,7 @@ java LexerTest miniPythonExample.py
 # Syntax Analysis
 java ParserTest miniPythonExample.py
 ```
-## Run example
+## Sample run
 miniPython code `miniPythonExample.py`
 ```python
 def add(a, b):

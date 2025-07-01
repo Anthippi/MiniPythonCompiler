@@ -50,4 +50,3 @@ After execution, a folder named ` minipython/` will be automatically generated, 
 - [Georgios Andritsos](https://github.com/Andritsos)
 - [Anthippi Fatsea](https://github.com/Anthippi)
 - [Christos Stamoulos](https://github.com/ChristosStamoulos)
-- [Maria Schoinaki](https://github.com/MariaSchoinaki)
